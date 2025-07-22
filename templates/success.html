@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Submission Successful</title>
+</head>
+<body>
+    <h1>Thank You for Your Submission!</h1>
+    <ul>
+        <li><strong>Name:</strong> {{ form.name.data }}</li>
+        <li><strong>Email:</strong> {{ form.email.data }}</li>
+        <li><strong>Gender:</strong> {{ form.gender.data }}</li>
+        <li><strong>Country:</strong> {{ form.country.data }}</li>
+        <li><strong>Accepted Terms:</strong> {{ 'Yes' if form.terms.data else 'No' }}</li>
+        <li><strong>Message:</strong> {{ form.message.data }}</li>
+        <li><strong>Birthdate:</strong> {{ form.birthdate.data }}</li>
+        <li><strong>Lucky Number:</strong> {{ form.lucky_number.data }}</li>
+    </ul>
+</body>
+</html>
