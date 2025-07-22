@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <title>Form Submission Successful</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Success</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Thank You for Your Submission!</h1>
-    <ul>
-        <li><strong>Name:</strong> {{ form.name.data }}</li>
-        <li><strong>Email:</strong> {{ form.email.data }}</li>
-        <li><strong>Gender:</strong> {{ form.gender.data }}</li>
-        <li><strong>Country:</strong> {{ form.country.data }}</li>
-        <li><strong>Accepted Terms:</strong> {{ 'Yes' if form.terms.data else 'No' }}</li>
-        <li><strong>Message:</strong> {{ form.message.data }}</li>
-        <li><strong>Birthdate:</strong> {{ form.birthdate.data }}</li>
-        <li><strong>Lucky Number:</strong> {{ form.lucky_number.data }}</li>
-    </ul>
+  <div class="container py-5">
+    <div class="alert alert-success text-white">
+      <h4>Registration Successful!</h4>
+      <p>You had {{ errors }} error(s) during validation.</p>
+      <ul>
+        <li>Name: {{ form.name.data }}</li>
+        <li>Email: {{ form.email.data }}</li>
+        <li>Username: {{ form.username.data }}</li>
+        <li>Age: {{ form.age.data }}</li>
+        <li>Bio: {{ form.bio.data or '(none)' }}</li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

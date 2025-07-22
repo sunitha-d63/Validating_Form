@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <div class="card bg-dark text-white mx-auto" style="max-width: 600px;">
+      <div class="card-body">
+        <h3 class="card-title mb-4">Register</h3>
+        <form method="POST" novalidate>
+          {{ form.hidden_tag() }}
+          {% for field in [form.name, form.email, form.username, form.password, form.confirm, form.age, form.bio] %}
+            <div class="mb-3">
+              {{ field.label(class_="form-label") }}
+              {{ field(class_="form-control bg-dark text-white" + (" is-invalid" if field.errors else "")) }}
+              {% for err in field.errors %}
+                <div class="invalid-feedback">{{ err }}</div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+          <p><strong>{{ form.errors|length }} error(s) detected.</strong></p>
+          {{ form.submit(class_="btn btn-primary") }}
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

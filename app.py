@@ -1,19 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for
-from forms import ContactForm
+from flask import Flask, render_template
+from forms import RegistrationForm
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key' 
+app.config['SECRET_KEY'] = 'dev-secret'
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    form = ContactForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        print("Form Data Submitted:")
-        for field_name, value in form.data.items():
-            if field_name != 'csrf_token':
-                print(f"{field_name}: {value}")
-        return render_template('success.html', form=form)
-    return render_template('form.html', form=form)
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        error_count = len(form.errors)
+        return render_template('success.html', form=form, errors=error_count)
+    return render_template('register.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
